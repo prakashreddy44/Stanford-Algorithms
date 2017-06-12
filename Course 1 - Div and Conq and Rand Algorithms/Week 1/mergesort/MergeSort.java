@@ -18,13 +18,12 @@ public class MergeSort {
 	
 	// recursively call sort until the lo is greater than or equal to hi (array of size 0)
 	// uses an auxiliary array to copy elements for merging 
-	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi, boolean flag) {
+	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
 		if (lo >= hi) return;
 		int mid = lo + (hi - lo) / 2; // to prevent integer overflow
-		sort(a, aux, lo, mid, !flag);
-		sort(a, aux, mid + 1, hi, !flag);
-		if (flag) merge(a, aux, lo, mid, hi);
-		else merge(aux, a, lo, mid, hi);
+		sort(aux, a, lo, mid);
+		sort(aux, a, mid + 1, hi);
+		merge(a, aux, lo, mid, hi);
 	}
 	
 	/**
@@ -33,6 +32,6 @@ public class MergeSort {
 	 */
 	public static void sort(Comparable[] a) {
 		Comparable[] aux = a.clone();
-		sort(a, aux, 0, a.length - 1, true);
+		sort(a, aux, 0, a.length - 1);
 	}
 }
