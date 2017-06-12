@@ -7,9 +7,6 @@ public class MergeSort {
 
 	// Stable merging of a[lo ... mid] with a[mid + 1 ... hi] by copying to aux[lo .. hi]
 	private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
-		for (int k = lo; k <= hi; k++) {
-			aux[k] = a[k];
-		}
 		int i = lo, j = mid + 1;
 		for (int k = lo; k <= hi; k++) {
 			if (i > mid) a[k] = aux[j++];
@@ -21,12 +18,13 @@ public class MergeSort {
 	
 	// recursively call sort until the lo is greater than or equal to hi (array of size 0)
 	// uses an auxiliary array to copy elements for merging 
-	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi, boolean flag) {
 		if (lo >= hi) return;
 		int mid = lo + (hi - lo) / 2; // to prevent integer overflow
-		sort(a, aux, lo, mid);
-		sort(a, aux, mid + 1, hi);
-		merge(a, aux, lo, mid, hi);
+		sort(a, aux, lo, mid, !flag);
+		sort(a, aux, mid + 1, hi, !flag);
+		if (flag) merge(a, aux, lo, mid, hi);
+		else merge(aux, a, lo, mid, hi);
 	}
 	
 	/**
@@ -34,7 +32,7 @@ public class MergeSort {
 	 * @param a the array to be sorted
 	 */
 	public static void sort(Comparable[] a) {
-		Comparable[] aux = new Comparable[a.length];
-		sort(a, aux, 0, a.length - 1);
+		Comparable[] aux = a.clone();
+		sort(a, aux, 0, a.length - 1, true);
 	}
 }
