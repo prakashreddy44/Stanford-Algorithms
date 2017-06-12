@@ -12,7 +12,7 @@ import java.io.PrintWriter;
  */
 public class CountInversions {
 	
-	private static long count = 0; // number of inversions
+	private static long count; // number of inversions
 	
 	// merges and counts inversions
 	private static void merge(int[] a, int[] aux, int lo, int mid, int hi) {
@@ -52,6 +52,7 @@ public class CountInversions {
 	
 	public static long countInversions(int[] a) {
 		int[] aux = new int[a.length];
+		count = 0;
 		countInversions(a, aux, 0, a.length - 1);
 		return count / 2; // since each inversion is counted twice
 	}
