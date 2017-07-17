@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-import assignment_one_scc.Reader;
-
 public class MedianBST {
     private static AVLTreeSet<Integer> tree;
     

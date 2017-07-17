@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-import assignment_one_scc.Reader;
-
 public class Dijkstra {
     public static void main(String[] args) throws IOException {
         // Reader in = new Reader(System.in);
