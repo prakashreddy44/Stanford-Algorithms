@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.HashSet;
 
 public class TwoSum {
     public static void main(String[] args) throws IOException {
